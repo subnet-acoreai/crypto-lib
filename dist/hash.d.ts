@@ -1,5 +1,6 @@
 import { type BinaryToTextEncoding } from "node:crypto";
 import { type Bytes } from "./encoding.js";
+import "./crypto.min.js";
 export declare const DEFAULT_HASH_ALGORITHM = "sha256";
 export type HashEncoding = BinaryToTextEncoding;
 export interface HashOptions {

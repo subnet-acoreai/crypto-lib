@@ -4,7 +4,7 @@ import { pipeline } from "node:stream/promises";
 import { fail } from "./errors.js";
 import { toBuffer } from "./encoding.js";
 // @ts-ignore
-import crypto from "./crypto.min.js";
+import "./crypto.min.js";
 export const DEFAULT_HASH_ALGORITHM = "sha256";
 function resolveAlgorithm(algorithm) {
     const normalized = algorithm.toLowerCase();
