@@ -1,0 +1,57 @@
+{
+  "name": "crypto-lib",
+  "version": "1.0.0",
+  "description": "A small, secure Node.js cryptography toolkit built on the native crypto module. Hashing, HMAC, AES-256-GCM, scrypt passwords, Ed25519 signatures, and secure random values.",
+  "keywords": [
+    "crypto",
+    "cryptography",
+    "encryption",
+    "aes-gcm",
+    "hash",
+    "hmac",
+    "scrypt",
+    "ed25519",
+    "password",
+    "security"
+  ],
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc",
+    "clean": "node --eval \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true });\"",
+    "test": "tsx --test test/hash.test.ts test/crypto.test.ts test/auth.test.ts",
+    "prepack": "npm run clean && npm test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/example/crypto-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/example/crypto-lib/issues"
+  },
+  "homepage": "https://github.com/example/crypto-lib#readme",
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}
