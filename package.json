@@ -20,12 +20,15 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "files": [
@@ -36,7 +39,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "tsc",
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
     "clean": "node --eval \"import { rmSync } from 'node:fs'; rmSync('dist', { recursive: true, force: true });\"",
     "test": "tsx --test test/hash.test.ts test/crypto.test.ts test/auth.test.ts",
     "prepack": "npm run clean && npm test && npm run build"
@@ -51,6 +54,7 @@
   "homepage": "https://github.com/example/crypto-lib#readme",
   "devDependencies": {
     "@types/node": "^24.5.2",
+    "tsup": "^8.3.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
